@@ -1,0 +1,4 @@
+### How does Monday work?
+- `Load()` method in the config package, reads the Monday config either specified by an environment variable or looked at in the default path in the HOME directory
+- The `run` subcommand either runs a project if you specify it as a command line argument, or brings up a prompt UI for you to select the project that you would like to run. The library used here is called [promptui](github.com/manifoldco/promptui). If the project you specify does not exist, the application panics
+- Once you have selected a project, the `runProject` function is ran in the main package. There is a lot of logic and setup that is going on in this function. The main piece is the `Watch` method that is called from the `watcher` in the `watch` package that implements the `Watcher` interface. It runs all of the local and forwarded applications
